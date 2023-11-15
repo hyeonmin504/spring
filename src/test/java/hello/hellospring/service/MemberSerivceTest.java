@@ -21,7 +21,7 @@ class MemberSerivceTest { //테스트를 원하는 곳에서 command shift t -> 
     MemoryMemberRepository memberRepository;
 
     @BeforeEach
-    public void beforeEach(){ //직접 new하지 않고 외부에서 넣어주는 것을 dependance injection(DI)라고 한다
+    public void beforeEach(){ //직접 new하지 않고 외부에서 넣어주는 것을 dependency injection(DI)라고 한다
         memberRepository = new MemoryMemberRepository();
         memberSerivce = new MemberSerivce(memberRepository);
     }
