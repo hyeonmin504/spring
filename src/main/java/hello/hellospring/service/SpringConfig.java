@@ -1,8 +1,10 @@
 package hello.hellospring.service;
 
 import hello.hellospring.repository.JdbcTemplateMemberRepository;
+import hello.hellospring.repository.JpaMemberRepository;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,20 +17,29 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    private final DataSource dataSource;
-    /*@Bean // -> @Service
+    // private final DataSource dataSource; // JDBC를 이용할 때
+    /*
+    @Bean // -> @Service
     public MemberSerivce memberSerivce(){
         return new MemberSerivce(memberRepository());
-    }*/
+    }
+    */
 
-    @Autowired
+    /*@Autowired
     public SpringConfig(DataSource dataSource){
         this.dataSource = dataSource;
+    }*/
+
+    private EntityManager em;
+
+    @Autowired
+    public SpringConfig(EntityManager em){
+        this.em = em;
     }
 
     @Bean // -> @Repository
     public MemberRepository memberRepository(){
         //return new MemoryMemberRepository();
-        return new JdbcTemplateMemberRepository(dataSource);
+        return new JpaMemberRepository(em);
     }
 }

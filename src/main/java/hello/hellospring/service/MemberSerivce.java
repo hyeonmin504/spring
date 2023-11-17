@@ -22,7 +22,7 @@ public class MemberSerivce {
     /*
      * 회원가입
      */
-    public Long join(Member member){
+    public Long join(Member member){ //jpa가 들어올 때 join이 들어오면 항상 트렌젝션에서 실행되야 함
         //같은 이름이 있는 중복 회원 x
         validateDuplicateMember(member);
         memberRepository.save(member);
