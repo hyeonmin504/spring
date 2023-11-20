@@ -1,5 +1,6 @@
 package hello.hellospring.service;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.repository.JpaMemberRepository;
 import hello.hellospring.repository.MemberRepository;
@@ -17,6 +18,19 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
+
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
+
+    @Bean
+    public MemberSerivce memberService() {
+        return new MemberSerivce(memberRepository);
+    }
+
     // private final DataSource dataSource; // JDBC를 이용할 때
     /*
     @Bean // -> @Service
@@ -30,6 +44,8 @@ public class SpringConfig {
         this.dataSource = dataSource;
     }*/
 
+
+/*
     private EntityManager em;
 
     @Autowired
@@ -41,5 +57,5 @@ public class SpringConfig {
     public MemberRepository memberRepository(){
         //return new MemoryMemberRepository();
         return new JpaMemberRepository(em);
-    }
+    }*/
 }
