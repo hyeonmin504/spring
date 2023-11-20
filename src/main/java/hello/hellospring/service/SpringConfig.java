@@ -1,5 +1,6 @@
 package hello.hellospring.service;
 
+import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.repository.JpaMemberRepository;
@@ -30,6 +31,7 @@ public class SpringConfig {
     public MemberSerivce memberService() {
         return new MemberSerivce(memberRepository);
     }
+
 
     // private final DataSource dataSource; // JDBC를 이용할 때
     /*
