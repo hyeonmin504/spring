@@ -10,7 +10,7 @@ public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // db가 알아서 생성해주는 것
     private Long id;
-
+    //colum("username")
     private String name;
 
     public Long getId() { // command n -> gettersetter / constructor

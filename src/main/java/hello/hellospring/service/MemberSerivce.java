@@ -32,10 +32,10 @@ public class MemberSerivce {
     private void validateDuplicateMember(Member member) { // findByName 을 쓸 때는 따로 메소드를 분리시키는게 리펙토링하기 좋다 control + t -> method
         //Optional<Member> result = memberRepository.findByName(member.getName()); optional로 뽑는건 권장 x
         // result.ifPresent(m->{
-        memberRepository.findByName(member.getName()) // 어차피 반환값이 optional이라서 ifpresent를 바로 사용함
-                .ifPresent(m -> { // optional에서 제공하는 함수 값이 있으면 아래를 리턴
-                    throw new IllegalStateException("이미 존재하는 회원입니다");
-        });
+        memberRepository.findByName(member.getName())
+                .ifPresent(m -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                });
     }
 
     /*

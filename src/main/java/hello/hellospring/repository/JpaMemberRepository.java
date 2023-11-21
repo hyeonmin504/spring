@@ -10,7 +10,7 @@ import java.util.Optional;
 @Transactional //jpa를 쓰려면 항상 트렌젝션이 있어야 한다. 데이터를 저장 ,변경할 때 필요
 public class JpaMemberRepository implements MemberRepository{
 
-    private final EntityManager em;
+    private final EntityManager em; //jpa는 엔티티 메니저로 모든 동작을 함
 
     public JpaMemberRepository(EntityManager em){ //엔티티메니저를 쓰려면 주입받아야 한다.
         this.em = em;
